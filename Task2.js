@@ -53,19 +53,28 @@ const questions = [
   "Please enter your last name: "
 ];
 
-const answers = [];
+function collectNames() {
+  return new Promise((resolve) => {
+    const answers = [];
 
-function ask(i) {
-  if (i < questions.length) {
-    rl.question(questions[i], (answer) => {
-      answers.push(answer);
-      ask(i + 1); // ask next question
-    });
-  } else {
-    rl.close(); // close AFTER all questions are done
-    console.log("Your answers:", answers);
-  }
+    const ask = (i) => {
+      if (i >= questions.length) {
+        rl.close();
+        resolve(answers);
+        return;
+      }
+
+      rl.question(questions[i], (answer) => {
+        answers.push(answer);
+        ask(i + 1);
+      });
+    };
+
+    ask(0);
+  });
 }
 
-ask(0);
-
+collectNames().then((answers) => {
+  console.log("Your answers:", answers);
+  // work with the answers array here
+});
