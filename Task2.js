@@ -12,8 +12,32 @@ class LinkedList {
         this.head = null;
     }
 
+    length() {
+        let count = 0;
+        let current = this.head;
+        while(current) {
+            count ++;
+            current = current.next;
+        }
+        return count;
+    }
+
     Get_element(pos) {
 
+        if (pos > this.length()) {
+            console.error("Linked List Error: Invalid position.")
+            return null;
+        }
+
+        let current = this.head;
+        let index = 0;
+
+        while (current && index < pos) {
+            current = current.next;
+            index++
+        }
+
+        return current ?? null;
     }
 
     Add_element(letter, part) {
@@ -73,14 +97,7 @@ const Example_Full_Name = buildExampleLinkedList();
 
 console.log(Example_Full_Name);
 
-if (require.main === module) {
-    console.log("Example linked list ready. Implement the LinkedList methods to view results:");
-    console.log("Print_list():");
-    Example_Full_Name.Print_list();
-    console.log("Print_full_name():");
-    Example_Full_Name.Print_full_name();
-}
-
+console.log(Example_Full_Name.Get_element(100).letter);
 
 
 // const readline = require('readline');
