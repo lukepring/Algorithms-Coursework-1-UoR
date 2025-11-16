@@ -40,41 +40,86 @@ class LinkedList {
 
 const Full_Name = new LinkedList();
 
-const readline = require('readline');
+// Example linked list so the methods above can be tested once implemented.
+function buildExampleLinkedList() {
+    const example = new LinkedList();
+    const sampleLetters = [
+        { letter: "L", part: "f" },
+        { letter: "u", part: "f" },
+        { letter: "k", part: "f" },
+        { letter: "e", part: "f" },
+        { letter: "J", part: "m" },
+        { letter: "a", part: "m" },
+        { letter: "m", part: "m" },
+        { letter: "e", part: "m" },
+        { letter: "s", part: "m" },
+        { letter: "P", part: "l" },
+        { letter: "r", part: "l" },
+        { letter: "i", part: "l" },
+        { letter: "n", part: "l" },
+        { letter: "g", part: "l" }
+    ];
 
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout
-});
+    const nodes = sampleLetters.map((data, index) => new Node(index + 1, data.letter, data.part));
+    for (let i = 0; i < nodes.length - 1; i++) {
+        nodes[i].next = nodes[i + 1];
+    }
 
-const questions = [
-  "Please enter your first name: ",
-  "Please enter your middle name: ",
-  "Please enter your last name: "
-];
-
-function collectNames() {
-  return new Promise((resolve) => {
-    const answers = [];
-
-    const ask = (i) => {
-      if (i >= questions.length) {
-        rl.close();
-        resolve(answers);
-        return;
-      }
-
-      rl.question(questions[i], (answer) => {
-        answers.push(answer);
-        ask(i + 1);
-      });
-    };
-
-    ask(0);
-  });
+    example.head = nodes[0];
+    return example;
 }
 
-collectNames().then((answers) => {
-  console.log("Your answers:", answers);
-  // work with the answers array here
-});
+const Example_Full_Name = buildExampleLinkedList();
+
+console.log(Example_Full_Name);
+
+if (require.main === module) {
+    console.log("Example linked list ready. Implement the LinkedList methods to view results:");
+    console.log("Print_list():");
+    Example_Full_Name.Print_list();
+    console.log("Print_full_name():");
+    Example_Full_Name.Print_full_name();
+}
+
+
+
+// const readline = require('readline');
+
+// const rl = readline.createInterface({
+//   input: process.stdin,
+//   output: process.stdout
+// });
+
+// const questions = [
+//   "Please enter your first name: ",
+//   "Please enter your middle name: ",
+//   "Please enter your last name: "
+// ];
+
+// function collectNames() {
+//   return new Promise((resolve) => {
+//     const answers = [];
+
+//     const ask = (i) => {
+//       if (i >= questions.length) {
+//         rl.close();
+//         resolve(answers);
+//         return;
+//       }
+
+//       rl.question(questions[i], (answer) => {
+//         answers.push(answer);
+//         ask(i + 1);
+//       });
+//     };
+
+//     ask(0);
+//   });
+// }
+
+// collectNames().then((answers) => {
+//   console.log("Your answers:", answers);
+//   Full_Name.Add_word(answers[0], "f");
+//   Full_Name.Add_word(answers[1], "m");
+//   Full_Name.Add_word(answers[2], "l");
+// });
