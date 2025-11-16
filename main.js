@@ -6,23 +6,47 @@
 
 function stackAlgorithm(stack) {
     console.warn(`Before Pop: ${stack}`);
+    let l = stack[stack.length - 1];
+    let s = stack[stack.length - 2];
+    while (stack.length > 1) {
+        // Compare and calculate two items at top
 
-    // Pop two items at top of stack
-    for (i = 0; i < 2; i++) {
-        stack.pop()
-        console.info(`Pass ${i+1}: ${stack}`);
+
+        // Pop two items at top of stack
+        for (i = 0; i < 2; i++) {
+            stack.pop();
+            console.info(`Pass ${i + 1}: ${stack}`);
+        }
+
+        if (l % 2 == 0 && s % 2 == 0) {
+            // Both Even
+            stack.push(l * s);
+        } else if (l % 2 != 0 && s % 2 != 0) {
+            // Both Odd
+            stack.push(l + s);
+        } else {
+            // Different, subtract smaller from larger
+            if (l > s) {
+                stack.push(l - s);
+            } else if (l < s) {
+                stack.push(s - l);
+            } else {
+                stack.push(0);
+            }
+        }
+
+        l = stack[stack.length - 1];
+        s = stack[stack.length - 2];
+
     }
-
-    // Compare and calculate two items at top
-    console.log(stack.length);
 
     // Return modified stack
     return stack;
-} 
+}
 
 function main() {
 
-    const exampleStack = [8,4,5,7,7,2,9,5,6];
+    const exampleStack = [8, 4, 5, 7, 7, 2, 9, 5, 6];
 
     console.log(`Final: ${stackAlgorithm(exampleStack)}`);
 
