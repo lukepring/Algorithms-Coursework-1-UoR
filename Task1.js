@@ -2,15 +2,11 @@
 // By Luke Pring (A00012218)
 // University of Roehampton
 
-
-
 function stackAlgorithm(stack) {
     console.warn(`Before Pop: ${stack}`);
     let l = stack[stack.length - 1];
     let s = stack[stack.length - 2];
     while (stack.length > 1) {
-        // Compare and calculate two items at top
-
 
         // Pop two items at top of stack
         for (i = 0; i < 2; i++) {
