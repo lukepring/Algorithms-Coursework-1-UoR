@@ -18,6 +18,7 @@ The loop repeats until the stack length is 1, then returns the mutated stack.
 const stack = [12, 3, 5, 8];
 const [result] = stackAlgorithm(stack); // stack mutated to [result]
 console.log(result);
+```
 
 
 # Task 2 – Linked List Name Builder
