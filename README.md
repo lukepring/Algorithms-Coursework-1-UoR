@@ -7,7 +7,7 @@ Stack Data Structure built in JavaScript.
 `Task1.js` implements `stackAlgorithm(stack)` (`Task1.js:5`), a destructive reducer that consumes the input stack two elements at a time and pushes a single result until one value remains. `main()` (`Task1.js:28`) just seeds an example stack, runs the algorithm, and logs the result.
 
 ## AI Usage Transparency
-I used AI **selectively** and **respectfully** within this coursework to **explain** and **understand** core concepts, **compile** Git commit messages and **refine** the documentation below (which is not submitted). All core algorithmic logic, data-structure implementation and problem solving decisions were designed and written by me.
+I used AI **selectively** and **respectfully** within this coursework to **explain** and **understand** core concepts, **compile** Git commit messages and **refine** the documentation below (for reference only, not submitted). All core algorithmic logic, data-structure implementation and problem solving decisions were designed and written by me.
 
 ## Reduction Rules
 Given the two top-most values `l` and `s`:
