@@ -53,3 +53,6 @@ const list = new LinkedList();
 list.Add_word("Ada", "f");
 list.Add_word("Lovelace", "l");
 list.Print_full_name(); // Ada  Lovelace
+```
+# AI Usage Transparency
+I used AI selectively and respectfully within this coursework to explain concepts, write Git commit messages and refine the documentation above. All core algorithmic logic, data-structure implementation and problem solving decisions were designed and written by me.
