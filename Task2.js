@@ -15,29 +15,28 @@ class LinkedList {
     length() {
         let count = 0;
         let current = this.head;
-        while(current) {
-            count ++;
+        while (current) {
+            count++;
             current = current.next;
         }
         return count;
     }
 
     Get_element(pos) {
-
-        if (pos > this.length()) {
-            console.error("Linked List Error: Invalid position.")
-            return null;
-        }
-
         let current = this.head;
         let index = 0;
 
         while (current && index < pos) {
             current = current.next;
-            index++
+            index++;
         }
 
-        return current ?? null;
+        if (!current || pos < 0) {
+            console.error("Linked List Error: Invalid position.")
+            return null;
+        }
+
+        return current;
     }
 
     Add_element(letter, part) {
@@ -51,7 +50,7 @@ class LinkedList {
     Search_element(letter) {
 
     }
- 
+
     Print_list() {
 
     }
@@ -97,7 +96,7 @@ const Example_Full_Name = buildExampleLinkedList();
 
 console.log(Example_Full_Name);
 
-console.log(Example_Full_Name.Get_element(100).letter);
+//console.log(Example_Full_Name.Get_element(100).letter);
 
 
 // const readline = require('readline');
