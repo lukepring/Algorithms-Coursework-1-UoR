@@ -1,3 +1,9 @@
+// Algorithms Coursework 1
+// Task 2
+// By Luke Pring (A00012218)
+// University of Roehampton London
+
+// Represents a single character node with its position and name part.
 class Node {
     constructor(position, letter, part) {
         this.position = position;
@@ -7,11 +13,13 @@ class Node {
     }
 }
 
+// A singly linked list to store the characters of a name.
 class LinkedList {
     constructor() {
         this.head = null;
     }
 
+    // Counts and returns the total number of nodes in the list.
     length() {
         let count = 0;
         let current = this.head;
@@ -22,6 +30,7 @@ class LinkedList {
         return count;
     }
 
+    // Returns the node at the given zero-based index, or null if invalid.
     Get_element(pos) {
         let current = this.head;
         let index = 0;
@@ -39,8 +48,18 @@ class LinkedList {
         return current;
     }
 
+    // Creates a new node with the given letter and appends it to the end of the list.
     Add_element(letter, part) {
-
+        const newNode = new Node(this.length() + 1, letter.toLowerCase(), part);
+        if (!this.head) {
+            this.head = newNode;
+            return;
+        }
+        let current = this.head;
+        while (current.next) {
+            current = current.next;
+        }
+        current.next = newNode;
     }
 
     Add_word(word, part) {
@@ -64,6 +83,7 @@ class LinkedList {
 const Full_Name = new LinkedList();
 
 // Example linked list so the methods above can be tested once implemented.
+// Creates a sample linked list with the name "Luke James Pring" for testing.
 function buildExampleLinkedList() {
     const example = new LinkedList();
     const sampleLetters = [
@@ -96,7 +116,11 @@ const Example_Full_Name = buildExampleLinkedList();
 
 console.log(Example_Full_Name);
 
-//console.log(Example_Full_Name.Get_element(100).letter);
+console.log(Example_Full_Name.Get_element(2).letter);
+
+Example_Full_Name.Add_element("X", "m");
+
+console.log(Example_Full_Name.Get_element(Example_Full_Name.length() - 1).letter);
 
 
 // const readline = require('readline');
