@@ -83,7 +83,7 @@ class LinkedList {
 const Full_Name = new LinkedList();
 
 // Example linked list so the methods above can be tested once implemented.
-// Creates a sample linked list with the name "Luke James Pring" for testing.
+// Creates a sample linked list with the name "Luke Matthew Pring" for testing.
 function buildExampleLinkedList() {
     const example = new LinkedList();
     const sampleLetters = [
@@ -91,11 +91,13 @@ function buildExampleLinkedList() {
         { letter: "u", part: "f" },
         { letter: "k", part: "f" },
         { letter: "e", part: "f" },
-        { letter: "J", part: "m" },
+        { letter: "M", part: "m" },
         { letter: "a", part: "m" },
-        { letter: "m", part: "m" },
+        { letter: "t", part: "m" },
+        { letter: "t", part: "m" },
+        { letter: "h", part: "m" },
         { letter: "e", part: "m" },
-        { letter: "s", part: "m" },
+        { letter: "w", part: "m" },
         { letter: "P", part: "l" },
         { letter: "r", part: "l" },
         { letter: "i", part: "l" },
