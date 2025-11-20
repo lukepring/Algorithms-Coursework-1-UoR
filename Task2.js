@@ -104,6 +104,7 @@ class LinkedList {
 
     Print_full_name() {
         let current = this.head;
+        if (!current) return;
         let name = "";
         let prevPart = "f";
         name += current.letter.toUpperCase();
@@ -155,7 +156,7 @@ class LinkedList {
 
 const Full_Name = new LinkedList();
 
-function main() {
+async function main() {
     const readline = require('readline');
 
     const rl = readline.createInterface({
@@ -190,12 +191,27 @@ function main() {
         });
     }
 
-    collectNames().then((answers) => {
-        console.log("Your answers:", answers);
-        Full_Name.Add_word(answers[0], "f");
-        Full_Name.Add_word(answers[1], "m");
-        Full_Name.Add_word(answers[2], "l");
-    });
+    const answers = await collectNames();
+    console.log("Your answers:", answers);
+    Full_Name.Add_word(answers[0], "f");
+    Full_Name.Add_word(answers[1], "m");
+    Full_Name.Add_word(answers[2], "l");
+
+    Full_Name.Print_list();
+
+    Full_Name.Print_full_name();
+
+    Full_Name.Add_element("a", "l");
+
+    Full_Name.Print_list();
+
+    Full_Name.Print_full_name();
+
+    console.log(Full_Name.Search_element("a"));
+
+    Full_Name.Print_list();
+
+    Full_Name.Print_full_name();
 
 }
 
