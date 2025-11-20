@@ -62,6 +62,7 @@ class LinkedList {
         current.next = newNode;
     }
 
+    // Splits a word into characters and adds each as a node to the list.
     Add_word(word, part) {
         const wordArray = word.split("");
         for (let i = 0; i < wordArray.length; i++) {
@@ -69,6 +70,7 @@ class LinkedList {
         }
     }
 
+    // Searches for all occurrences of a letter and returns their positions.
     Search_element(letter) {
         let current = this.head;
         let results = [];
@@ -82,6 +84,7 @@ class LinkedList {
         return results.length > 0 ? results : null;
     }
 
+    // Prints the entire linked list structure as a formatted string.
     Print_list() {
         let current = this.head;
         let result = "[";
@@ -102,6 +105,7 @@ class LinkedList {
         console.log(result);
     }
 
+    // Reconstructs and prints the full name with proper capitalization and spacing.
     Print_full_name() {
         let current = this.head;
         if (!current) return;
@@ -124,38 +128,9 @@ class LinkedList {
 
 }
 
-
-// Example linked list so the methods above can be tested once implemented.
-// Creates a sample linked list with the name "Luke Matthew Pring" for testing.
-// function buildExampleLinkedList() {
-//     const example = new LinkedList();
-//     const sampleLetters = [];
-
-//     const nodes = sampleLetters.map((data, index) => new Node(index + 1, data.letter, data.part));
-//     for (let i = 0; i < nodes.length - 1; i++) {
-//         nodes[i].next = nodes[i + 1];
-//     }
-
-//     example.head = nodes[0];
-//     return example;
-// }
-
-// const Example_Full_Name = buildExampleLinkedList();
-
-// Example_Full_Name.Add_word("Luke", "f");
-
-// Example_Full_Name.Add_word("Matthew", "m");
-
-// Example_Full_Name.Add_word("Pring", "l");
-
-// Example_Full_Name.Print_full_name();
-
-// console.log(Example_Full_Name.Search_element("l"));
-
-// Example_Full_Name.Print_list();
-
 const Full_Name = new LinkedList();
 
+// Main execution function to collect user input and demonstrate list operations.
 async function main() {
     const readline = require('readline');
 
