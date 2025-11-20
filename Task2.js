@@ -71,102 +71,133 @@ class LinkedList {
 
     Search_element(letter) {
         let current = this.head;
+        let results = [];
+        letter = letter.toLowerCase();
         while (current) {
             if (current.letter === letter) {
-                return current;
+                results.push(current.position);
             }
             current = current.next;
         }
-        return null;
+        return results.length > 0 ? results : null;
     }
 
     Print_list() {
         let current = this.head;
+        let result = "[";
         while (current) {
-            console.log(current.letter);
+            result += "(";
+            result += current.position;
+            result += ", ";
+            result += current.letter;
+            result += ", ";
+            result += current.part;
+            result += ")";
             current = current.next;
+            if (current) {
+                result += ", ";
+            }
         }
+        result += "]";
+        console.log(result);
     }
 
     Print_full_name() {
         let current = this.head;
+        let name = "";
+        let prevPart = "f";
+        name += current.letter.toUpperCase();
+        current = current.next;
         while (current) {
-            console.log(current.letter);
+            if (current.part != prevPart) {
+                name += " ";
+                name += current.letter.toUpperCase();
+            } else {
+                name += current.letter;
+            }
+            prevPart = current.part;
             current = current.next;
         }
+        console.log(name);
     }
 
 }
 
-const Full_Name = new LinkedList();
 
 // Example linked list so the methods above can be tested once implemented.
 // Creates a sample linked list with the name "Luke Matthew Pring" for testing.
-function buildExampleLinkedList() {
-    const example = new LinkedList();
-    const sampleLetters = [];
+// function buildExampleLinkedList() {
+//     const example = new LinkedList();
+//     const sampleLetters = [];
 
-    const nodes = sampleLetters.map((data, index) => new Node(index + 1, data.letter, data.part));
-    for (let i = 0; i < nodes.length - 1; i++) {
-        nodes[i].next = nodes[i + 1];
-    }
+//     const nodes = sampleLetters.map((data, index) => new Node(index + 1, data.letter, data.part));
+//     for (let i = 0; i < nodes.length - 1; i++) {
+//         nodes[i].next = nodes[i + 1];
+//     }
 
-    example.head = nodes[0];
-    return example;
-}
-
-const Example_Full_Name = buildExampleLinkedList();
-
-Example_Full_Name.Add_word("Luke", "f");
-
-Example_Full_Name.Add_word("Matthew", "m");
-
-Example_Full_Name.Add_word("Pring", "l");
-
-Example_Full_Name.Print_full_name();
-
-console.log(Example_Full_Name.Search_element("u"));
-
-Example_Full_Name.Print_list();
-
-
-// const readline = require('readline');
-
-// const rl = readline.createInterface({
-//   input: process.stdin,
-//   output: process.stdout
-// });
-
-// const questions = [
-//   "Please enter your first name: ",
-//   "Please enter your middle name: ",
-//   "Please enter your last name: "
-// ];
-
-// function collectNames() {
-//   return new Promise((resolve) => {
-//     const answers = [];
-
-//     const ask = (i) => {
-//       if (i >= questions.length) {
-//         rl.close();
-//         resolve(answers);
-//         return;
-//       }
-
-//       rl.question(questions[i], (answer) => {
-//         answers.push(answer);
-//         ask(i + 1);
-//       });
-//     };
-
-//     ask(0);
-//   });
+//     example.head = nodes[0];
+//     return example;
 // }
 
-// collectNames().then((answers) => {
-//   console.log("Your answers:", answers);
-//   Full_Name.Add_word(answers[0], "f");
-//   Full_Name.Add_word(answers[1], "m");
-//   Full_Name.Add_word(answers[2], "l");
-// });
+// const Example_Full_Name = buildExampleLinkedList();
+
+// Example_Full_Name.Add_word("Luke", "f");
+
+// Example_Full_Name.Add_word("Matthew", "m");
+
+// Example_Full_Name.Add_word("Pring", "l");
+
+// Example_Full_Name.Print_full_name();
+
+// console.log(Example_Full_Name.Search_element("l"));
+
+// Example_Full_Name.Print_list();
+
+const Full_Name = new LinkedList();
+
+function main() {
+    const readline = require('readline');
+
+    const rl = readline.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    const questions = [
+        "Please enter your first name: ",
+        "Please enter your middle name: ",
+        "Please enter your last name: "
+    ];
+
+    function collectNames() {
+        return new Promise((resolve) => {
+            const answers = [];
+
+            const ask = (i) => {
+                if (i >= questions.length) {
+                    rl.close();
+                    resolve(answers);
+                    return;
+                }
+
+                rl.question(questions[i], (answer) => {
+                    answers.push(answer);
+                    ask(i + 1);
+                });
+            };
+
+            ask(0);
+        });
+    }
+
+    collectNames().then((answers) => {
+        console.log("Your answers:", answers);
+        Full_Name.Add_word(answers[0], "f");
+        Full_Name.Add_word(answers[1], "m");
+        Full_Name.Add_word(answers[2], "l");
+    });
+
+}
+
+main();
+
