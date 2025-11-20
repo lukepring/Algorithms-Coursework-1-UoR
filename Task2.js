@@ -107,23 +107,24 @@ class LinkedList {
 
     // Reconstructs and prints the full name with proper capitalization and spacing.
     Print_full_name() {
+        let f = "", m = "", l = "";
         let current = this.head;
-        if (!current) return;
-        let name = "";
-        let prevPart = "f";
-        name += current.letter.toUpperCase();
-        current = current.next;
+
         while (current) {
-            if (current.part != prevPart) {
-                name += " ";
-                name += current.letter.toUpperCase();
-            } else {
-                name += current.letter;
-            }
-            prevPart = current.part;
+            if (current.part === "f") f += current.letter;
+            else if (current.part === "m") m += current.letter;
+            else if (current.part === "l") l += current.letter;
             current = current.next;
         }
-        console.log(name);
+
+        const capitalize = (str) => str.length > 0 ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+
+        const fullName = [f, m, l]
+            .map(capitalize)
+            .filter(part => part.length > 0)
+            .join(" ");
+
+        console.log(fullName);
     }
 
 }
