@@ -63,19 +63,37 @@ class LinkedList {
     }
 
     Add_word(word, part) {
-
+        const wordArray = word.split("");
+        for (let i = 0; i < wordArray.length; i++) {
+            this.Add_element(wordArray[i], part);
+        }
     }
 
     Search_element(letter) {
-
+        let current = this.head;
+        while (current) {
+            if (current.letter === letter) {
+                return current;
+            }
+            current = current.next;
+        }
+        return null;
     }
 
     Print_list() {
-
+        let current = this.head;
+        while (current) {
+            console.log(current.letter);
+            current = current.next;
+        }
     }
 
     Print_full_name() {
-
+        let current = this.head;
+        while (current) {
+            console.log(current.letter);
+            current = current.next;
+        }
     }
 
 }
@@ -86,24 +104,7 @@ const Full_Name = new LinkedList();
 // Creates a sample linked list with the name "Luke Matthew Pring" for testing.
 function buildExampleLinkedList() {
     const example = new LinkedList();
-    const sampleLetters = [
-        { letter: "L", part: "f" },
-        { letter: "u", part: "f" },
-        { letter: "k", part: "f" },
-        { letter: "e", part: "f" },
-        { letter: "M", part: "m" },
-        { letter: "a", part: "m" },
-        { letter: "t", part: "m" },
-        { letter: "t", part: "m" },
-        { letter: "h", part: "m" },
-        { letter: "e", part: "m" },
-        { letter: "w", part: "m" },
-        { letter: "P", part: "l" },
-        { letter: "r", part: "l" },
-        { letter: "i", part: "l" },
-        { letter: "n", part: "l" },
-        { letter: "g", part: "l" }
-    ];
+    const sampleLetters = [];
 
     const nodes = sampleLetters.map((data, index) => new Node(index + 1, data.letter, data.part));
     for (let i = 0; i < nodes.length - 1; i++) {
@@ -116,13 +117,17 @@ function buildExampleLinkedList() {
 
 const Example_Full_Name = buildExampleLinkedList();
 
-console.log(Example_Full_Name);
+Example_Full_Name.Add_word("Luke", "f");
 
-console.log(Example_Full_Name.Get_element(2).letter);
+Example_Full_Name.Add_word("Matthew", "m");
 
-Example_Full_Name.Add_element("X", "m");
+Example_Full_Name.Add_word("Pring", "l");
 
-console.log(Example_Full_Name.Get_element(Example_Full_Name.length() - 1).letter);
+Example_Full_Name.Print_full_name();
+
+console.log(Example_Full_Name.Search_element("u"));
+
+Example_Full_Name.Print_list();
 
 
 // const readline = require('readline');
